@@ -36,6 +36,11 @@ RIGHT_ANGLE = 90
 #                   Your Code Goes Below                #
 #########################################################
 def drawSquare(t, width, top_left_x, top_left_y):
+    '''
+    Outlines dartboard with a square
+    parameters: (turtle)[turtle object], (int)[width of square][coordinates of Sqaure boundries]
+    return: none
+    '''
     t.up()
     t.goto(top_left_x,top_left_y)
     t.down()
@@ -49,6 +54,11 @@ def drawSquare(t, width, top_left_x, top_left_y):
    
 
 def drawLine(t, x_start, y_start, x_end, y_end):
+    '''
+    draws axes
+    parameters: (turtle)[turtle object], (int)[coordinates to draw axes]
+    return: none
+    '''
 
     t.down()
 
@@ -63,6 +73,11 @@ def drawLine(t, x_start, y_start, x_end, y_end):
 
 
 def drawCircle(t, radius):
+    '''
+    Draws dartboard
+    parameters:(turtle)[turtle object], (int)[radius of dartboard]
+    return:
+    '''
 
     t.down()
     t.circle(radius, steps=360)
@@ -70,6 +85,11 @@ def drawCircle(t, radius):
 
 
 def setUpDartboard(window, t):
+    '''
+    Sets up dartboard by calling functions
+    parameters: (window)[window object], (turtle)[turtle object]
+    return: none
+    '''
     
     window.setworldcoordinates(-1, -1, 1, 1)
     drawSquare(t, BOARD_WIDTH, -1, 1)
@@ -77,12 +97,87 @@ def setUpDartboard(window, t):
     drawCircle(t, 1)
 
 def throwDart(t):
-    x_throw = random.uniform(0,1)
-    y_throw = random.uniform(0,1)
+    '''
+    Throws dart
+    parameters: (turtle)[turtle object]
+    return: none
+    '''
+
+    t.stamp()
     t.shape("circle")
+    x_throw = random.uniform(-1,1)
+    y_throw = random.uniform(-1,1)
+
     t.up()
     t.goto(x_throw,y_throw)
-    t.stamp()
+
+    if t.distance(0,0) <=1:
+        t.color("green")
+    else:
+        t.color("red")
+
+    t.down()
+
+   
+
+def inCircle(t, circle_center, radius):
+    '''
+    Determines if the dart throw is inside the dartboard
+    parameters: (turtle)[turtle object], (int)[coordinate of circle center][radius of circle]
+    return: (boolean)[True or False]
+    '''
+    
+    if t.distance(circle_center, circle_center) <= radius:
+        return True
+    else:
+        return False
+
+def montePi(number_darts, t):
+    '''
+    Calculates pi
+    parameters: (int)[number of darts to throw], (turtle)[turtle object]
+    return: approx_pi (int)[value of pi approx]
+    '''
+
+    insideCount = 0
+    for i in range(number_darts):
+        throwDart(t)
+
+        if inCircle(t, 0, 1) == True:
+            insideCount = insideCount + 1
+
+    approx_pi = 4 * insideCount/number_darts
+    
+    return approx_pi
+
+
+def playDarts(t):
+    '''
+    Plays a game of darts between two people
+    parameters: (turtle)[turtle object]
+    return: none
+    '''
+    print("Simulating a two player game...")
+    player1 = 0
+    player2 = 0
+
+    for i in range (10):
+        throwDart(t)
+        if inCircle(t, 0, 1) == True:
+            player1 = player1 + 1
+        throwDart(t)
+        if inCircle(t, 0, 1) == True:
+            player2 = player2 + 1
+        print("Score: ",player1,":",player2)
+    
+    if player1 > player2:
+        print("Player 1 wins! Score: ",player1,":",player2)
+    elif player1 > player2:
+        print("Player 2 wins! Score: ",player1,":",player2)
+    elif player1 == player2:
+        print("It's a tie! Score: ",player1,":",player2)
+
+
 #########################################################
 #         Do not alter any code below here              #
 #       Your code must work with the main proivided     #
@@ -90,7 +185,7 @@ def throwDart(t):
 def main():
     # Get number of darts for simulation from user
     # Note continuation character <\> so we don't go over 78 columns:
-    print("This is a program that simulates throwing darts at a dartboard\n" \
+    print("This is a program that simulates throwing darts at a dartboard\n"\
         "in order to approximate pi: The ratio of darts in a unit circle\n"\
         "to the total number of darts in a 2X2 square should be\n"\
         "approximately  equal to pi/4")
@@ -106,6 +201,7 @@ def main():
     for i in range(10):
         throwDart(darty)
 
+
     print("\tPart A Complete...")
     print("=========== Part B ===========")
     # Includes the following code in order to update animation periodically
@@ -119,6 +215,7 @@ def main():
     print("\tPart B Complete...")
     # Keep the window up until dismissed
     # Don't hide or mess with window while it's 'working'
+    playDarts(darty)
     window.exitonclick()
 
 main()
