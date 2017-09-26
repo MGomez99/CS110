@@ -172,7 +172,7 @@ def playDarts(t):
     
     if player1 > player2:
         print("Player 1 wins! Score: ",player1,":",player2)
-    elif player1 > player2:
+    elif player1 < player2:
         print("Player 2 wins! Score: ",player1,":",player2)
     elif player1 == player2:
         print("It's a tie! Score: ",player1,":",player2)
