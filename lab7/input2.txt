@@ -1,0 +1,8 @@
+FX
+9
+70
+5
+2
+X:X+YF+
+Y:-FX-Y
+quit
