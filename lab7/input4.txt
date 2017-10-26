@@ -1,0 +1,7 @@
+AB
+5
+60
+10
+2
+A:A+FB+AFB+FF
+B:BF+AB+BFA+FF

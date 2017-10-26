@@ -51,6 +51,7 @@ def drawLSystem(orders, distance, degree):
     t = turtle.Turtle()
     t.speed(0)
     wn = turtle.Screen()
+    positions = []  # keep track of positions, record (grouping of rel data)
 
     for order in orders:
         if order == 'F':
@@ -59,6 +60,13 @@ def drawLSystem(orders, distance, degree):
             t.rt(degree)
         elif order == '-':
             t.lt(degree)
+        elif order == '[':
+            positions.append([t.heading(), t.xcor(), t.ycor()])
+        elif order == ']':
+            if len(positions) == 0:
+                pos = positions.pop(0)
+                t.goto(pos[1], pos[2])
+                t.setheading(pos[0])
 
     wn.exitonclick()
 

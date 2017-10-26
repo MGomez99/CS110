@@ -11,13 +11,14 @@ def main():
     rules = ''
 
     for i in range(number_of_rules):
-        current_rule = input("Please input a rule(Format: 'character:substitution:'): ")
+        current_rule = input("Please input a rule (Format:'character:substitution:'): ")
         rules += current_rule + ','
 
     result = lsystems.createLSystem(iterations, axiom, rules)
     print(result)
     lsystems.drawLSystem(result, distance, angle)
+    print("it worked!")
 
-
+# test with: AB , 3, 60, 30, 1, A:AF+FB+FF-FAB
 
 main()
