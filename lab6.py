@@ -29,7 +29,7 @@ def both_ends(s):
     :return: string with middle removed if the total number of characters is greater than 2, else return empty string
     """
 
-    return s[0]+s[1]+s[-2]+s[-1] if len(s)>=2 else ""
+    return s[0]+s[1]+s[-2]+s[-1] if len(s) >= 2 else ""
 
 
 # C. fix_start
