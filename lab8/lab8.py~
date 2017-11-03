@@ -1,0 +1,14 @@
+import cipher
+
+
+def main():
+    message = ''
+    while message != 'q':
+        message = input("What is your message?")
+        encryption = cipher.encrypt(message)
+        print('Encyrpted message: ', encryption[0], "\nCipher Dictionary: ", encryption[1])
+        decryption = cipher.decrypt(encryption[0], encryption[1])
+        print ("Decrypted message:", decryption)
+    print("q detected! Terminating sequence.")
+
+main()

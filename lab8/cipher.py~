@@ -1,0 +1,37 @@
+import random
+
+
+def encrypt(message):
+    x = random.randrange(32,127)  # cipher generator for values
+    cipher = {}  # cipher dictionary
+    #mylist = []
+    '''
+    for i in range(32, 127):
+        mylist += [ord(i)]
+    for i in range(32,127)
+        cipher[ord(i)] = ord(random.randint(32,127))
+    '''
+    for i in range(32,127):
+        while chr(x) in cipher.values():
+            x = random.randrange(32,127)
+        cipher[chr(i)] = chr(x)
+
+
+    encrypted_message = ''
+    for c in message:
+        if c in cipher:
+            encrypted_message += cipher[c]
+        else:
+            encrytped_message += c
+    
+    return encrypted_message, cipher
+
+
+def decrypt(encrypted_message, cipher):
+    decrypted_message = ''
+    for c in encrypted_message:
+        if c in cipher:
+            decrypted_message += cipher[c]
+        else:
+            decrypted_message += c
+    return decrypted_message
