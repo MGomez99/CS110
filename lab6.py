@@ -1,5 +1,3 @@
-
-
 # A. donuts
 # Given an int count of a number of donuts, return a string
 # of the form 'Number of donuts: <count>', where <count> is the number
@@ -14,7 +12,7 @@ def donuts(count):
     :return: string, states number of donuts and the value if less than 10, else states "many"
     """
 
-    return "Number of donuts: "+str(count) if count < 10 else "Number of donuts: many"
+    return "Number of donuts:  " + str(count) if count < 10 else "Number of donuts: many"
 
 
 # B. both_ends
@@ -29,7 +27,7 @@ def both_ends(s):
     :return: string with middle removed if the total number of characters is greater than 2, else return empty string
     """
 
-    return s[0]+s[1]+s[-2]+s[-1] if len(s) >= 2 else ""
+    return s[0] + s[1] + s[-2] + s[-1] if len(s) >= 2 else ""
 
 
 # C. fix_start
@@ -48,8 +46,7 @@ def fix_start(s):
     :return: string after modification
     """
 
-    return s[0]+(s[1:].replace(s[0], "*"))
-
+    return s[0] + (s[1:].replace(s[0], "*"))
 
 
 # Provided simple test() function used in main() to print
@@ -66,7 +63,7 @@ def test(got, expected):
         prefix = ' OK '
     else:
         prefix = '  X '
-    print(prefix," got: ", got," expected: ", expected)
+    print(prefix, " got: ", got, " expected: ", expected)
 
 
 # Provided main() calls the above functions with interesting inputs,
@@ -91,6 +88,5 @@ def main():
     test(fix_start('google'), 'goo*le')
     test(fix_start('donut'), 'donut')
 
+
 main()
-
-

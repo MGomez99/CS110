@@ -187,9 +187,9 @@ def playDarts(t):
 def main():
     # Get number of darts for simulation from user
     # Note continuation character <\> so we don't go over 78 columns:
-    print("This is a program that simulates throwing darts at a dartboard\n"
-          "in order to approximate pi: The ratio of darts in a unit circle\n"
-          "to the total number of darts in a 2X2 square should be\n"
+    print("This is a program that simulates throwing darts at a dartboard\n" \
+          "in order to approximate pi: The ratio of darts in a unit circle\n" \
+          "to the total number of darts in a 2X2 square should be\n" \
           "approximately  equal to pi/4")
     print("=========== Part A ===========")
 

@@ -1,0 +1,6 @@
+90
+3
+F
+F : 
+X : FX+FX+FXFY-FY-
+Y : +FX+FXFY-FY-FY

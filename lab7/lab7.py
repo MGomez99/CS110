@@ -1,4 +1,4 @@
-import lsystems
+from lab7 import lsystems
 
 
 def main():
@@ -12,13 +12,13 @@ def main():
 
     for i in range(number_of_rules):
         current_rule = input("Please input a rule (Format:'character:substitution:'): ")
-        rules += current_rule + ','
+        rules += current_rule + ','  # need to trim trailing comma eventually
 
     result = lsystems.createLSystem(iterations, axiom, rules)
     print(result)
     lsystems.drawLSystem(result, distance, angle)
-    print("it worked!")
 
-# test with: AB , 3, 60, 30, 1, A:AF+FB+FF-FAB
+# (ignore) test with: AB , 3, 60, 30, 1, A:AF+FB+FF-FAB
+
 
 main()
